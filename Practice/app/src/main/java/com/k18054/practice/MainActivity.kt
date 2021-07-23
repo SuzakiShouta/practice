@@ -6,6 +6,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,12 +15,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var sensorManager: SensorManager
     private var AccSensor: Sensor? = null
 
+    lateinit var OtherFileStorage: OtherFileStorage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         AccSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
+
+        OtherFileStorage = OtherFileStorage(this)
     }
 
     //センサーに何かしらのイベントが発生したときに呼ばれる
@@ -38,6 +43,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                          Z: $sensorZ"""
             val textView: TextView = findViewById(R.id.textView)
             textView.setText(strTmp)
+            //追加
+            val log:String = sensorX.toString().plus(",").plus(sensorY).plus(",").plus(sensorZ)
+            OtherFileStorage.doLog(log)
+            Log.d("log",log)
         }
     }
 
