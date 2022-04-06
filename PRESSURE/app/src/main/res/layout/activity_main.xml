@@ -8,19 +8,19 @@
 
     <Button
         android:id="@+id/Start"
-        android:layout_width="360px"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginTop="50dp"
         android:text="@string/start"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FileName" />
 
     <Button
         android:id="@+id/Stop"
-        android:layout_width="360px"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="32dp"
         android:text="@string/stop"
         android:textSize="24sp"
@@ -32,14 +32,49 @@
         android:id="@+id/FileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:ems="10"
+        android:hint="FileName"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
-        android:text="@string/name"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/Start"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/AmpNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="@string/amp"
+        android:inputType="number"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Start" />
+
+    <Button
+        android:id="@+id/VibStart"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/start"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AmpNumber" />
+
+    <Button
+        android:id="@+id/VibStop"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/stop"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/VibStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/VibStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
