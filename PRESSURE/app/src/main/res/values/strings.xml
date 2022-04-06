@@ -3,4 +3,5 @@
     <string name="start">start</string>
     <string name="name">Name</string>
     <string name="stop">stop</string>
+    <string name="amp">amp</string>
 </resources>
