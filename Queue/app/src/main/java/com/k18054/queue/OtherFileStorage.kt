@@ -54,7 +54,6 @@ class OtherFileStorage(context: Context, name: String, queue: Queue) {
         handler.removeCallbacks(runnable)
     }
 
-
     fun saveArrayDeque(copy: Array<Any?>) {
         val fil = FileWriter(filePath,fileAppend)
         val pw = PrintWriter(BufferedWriter(fil))
