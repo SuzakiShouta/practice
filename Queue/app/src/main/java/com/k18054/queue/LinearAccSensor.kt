@@ -7,20 +7,20 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.util.Log
 
-class PressureSensor(context: Context, queue: Queue): SensorEventListener {
+class LinearAccSensor(context: Context, queue: Queue): SensorEventListener {
 
     val context = context
     val queue = queue
     private lateinit var sensorManager: SensorManager
-    private var PreSensor: Sensor? = null
+    private var AccSensor: Sensor? = null
 
     init {
         sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        PreSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE)
+        AccSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
     }
 
     fun start() {
-        sensorManager.registerListener(this, PreSensor, SensorManager.SENSOR_DELAY_UI)
+        sensorManager.registerListener(this, AccSensor, SensorManager.SENSOR_DELAY_UI)
     }
 
     fun stop() {
@@ -29,8 +29,8 @@ class PressureSensor(context: Context, queue: Queue): SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent) {
         var pressure = event.values[0]
-        queue.pressureQueue.add(TimeManager().getUnixTime().toString().plus(",").plus(pressure))
-        Log.d("Pressure",queue.pressureQueue.size.toString())
+        queue.linerAccQueue.add(TimeManager().getUnixTime().toString().plus(",").plus(pressure))
+        Log.d("LinerAcc",queue.linerAccQueue.size.toString())
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
