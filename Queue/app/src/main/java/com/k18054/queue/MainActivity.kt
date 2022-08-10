@@ -22,10 +22,11 @@ class MainActivity : AppCompatActivity() {
         stopButton.isEnabled = false
 
         startButton.setOnClickListener {
-            otherFileStorage = OtherFileStorage(this,fileNameText.text.toString(),queue)
-            otherFileStorage?.saveAtBatch()
+            queue.pressureQueue.clear()
             pressureSensor = PressureSensor(this, queue)
             pressureSensor?.start()
+            otherFileStorage = OtherFileStorage(this,fileNameText.text.toString(),queue)
+            otherFileStorage?.saveAtBatch()
             stopButton.isEnabled = true
             startButton.isEnabled = false
         }
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             stopButton.isEnabled = false
             otherFileStorage?.stop()
             pressureSensor?.stop()
+            otherFileStorage = null
         }
 
     }
